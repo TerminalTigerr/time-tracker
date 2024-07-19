@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TimerForm from './TimerForm.tsx'
 
-interface Props {
-  isOpen: boolean
-}
 
-const ToggleableTimerForm: React.FC<Props> = ({isOpen}) => {
+
+const ToggleableTimerForm = () => {
+  const [isOpen, setOpen] = useState(false)
+
+  const handleFormOpen = () => {
+    setOpen(prev => !prev)
+  }
   if(isOpen){
     return(
       <TimerForm
@@ -17,6 +20,7 @@ const ToggleableTimerForm: React.FC<Props> = ({isOpen}) => {
     return(
       <div className=' '>
         <button
+          onClick={handleFormOpen}
           className='text-lg text-gray-600 font-semibold border-[1px] border-gray-300 px-3 py-2' 
           type='submit'
         >

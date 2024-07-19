@@ -1,4 +1,4 @@
-export function renderElapsedStrin(elapsed: string, runningSince: null) {
+export function renderElapsedStrin(elapsed: number, runningSince: null | number) {
   let totalElapsed = elapsed
   if (runningSince) {
     totalElapsed += Date.now() - runningSince;

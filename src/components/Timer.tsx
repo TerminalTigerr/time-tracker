@@ -4,8 +4,8 @@ import { renderElapsedStrin } from '../helpers.ts'
 interface TimerProps   {
   title: string
   project: string
-  elapsed: string
-  runningSince: null
+  elapsed: number
+  runningSince: null | number
 }
 
 const Timer = (props: TimerProps) => {

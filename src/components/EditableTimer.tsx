@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TimerForm from './TimerForm.tsx'
 import Timer from './Timer.tsx'
 
 interface Props {
+  id: string
   title: string
   project: string
-  elapsed: string
-  runningSince: null
-  editFormOpen: boolean
+  elapsed: number
+  runningSince: null | number
 }
 
 const EditableTimer = (props: Props) => {
-  if(props.editFormOpen){
+  const [editFormOpen, setFormOpen] = useState(false)
+  if(editFormOpen){
     return (
       <div className='justify-self-center items-center border-[1px] border-gray-300 rounded-lg w-full'>
         <TimerForm 
