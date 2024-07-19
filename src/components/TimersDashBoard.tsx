@@ -10,26 +10,29 @@ interface Timers {
   runningSince: number | null
 }
 
+
+
 const TimersDashBoard = () => {
   const [timers, setTimers] = useState<Timers[]>([
     {
       title: "Practice React",
       project: "Web Domination",
-      id: '23hshaueiqo1nuuboska24',
+      id: '00011',
       elapsed: 3628121,
       runningSince: Date.now()
     },
     {
       title: "Practice Python",
       project: "Machine Learning",
-      id: '23hshaueiqo1nuuboska24',
+      id: '00012',
       elapsed: 5675432,
       runningSince: null
     }
   ])
+
   return (
     <main className='main '>
-      <div className='flex flex-col justify-center items-center space-y-2 mt-10'>
+      <div className='flex flex-col justify-center items-center gap-3 py-10'>
         <EditableTimerList 
           timers={timers}
         />

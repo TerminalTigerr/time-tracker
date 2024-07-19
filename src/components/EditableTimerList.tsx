@@ -21,10 +21,11 @@ const EditableTimerList = (props: Props) => {
       project={timer.project}
       elapsed={timer.elapsed}
       runningSince={timer.runningSince}
+
     />
   ))
   return (
-    <div className='grid gap-4 p-5 justify-items-center'>
+    <div className='grid gap-3'>
       {timers}
     </div>
   )

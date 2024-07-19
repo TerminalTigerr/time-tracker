@@ -3,11 +3,13 @@ import React, { useState } from 'react'
 interface Props {
   title: string
   project: string
+  onClose?: () => void 
 }
 
 interface InputFields {
   title: string
   project: string
+  
 }
 
 const TimerForm = (props: Props) => {
@@ -26,12 +28,12 @@ const TimerForm = (props: Props) => {
 
   const submitText = props.title ? 'Update' : 'Create'
   return (
-    <div className=''>
-      <div className='gird space-y-3 p-3'>
+    <div className='w-[320px] border-[1px] border-gray-300 rounded-md shadow-sm'>
+      <div className='gird space-y-3 p-5'>
         <div className='grid space-y-1'>
           <label>Title</label>
           <input 
-            className='px-3 py-1 focus:outline-none border-[1px] border-gray-300 rounded-md' 
+            className='px-4 py-2 focus:outline-none border-[1px] border-gray-300 rounded-md' 
             placeholder='Title' 
             type="text" 
             name='title'
@@ -60,6 +62,7 @@ const TimerForm = (props: Props) => {
           <button 
             className='border-[1px] border-red-500 w-[50%]'
             type='submit'
+            onClick={props.onClose}
           >
             Cancel
           </button>
