@@ -1,6 +1,5 @@
-
-export function renderElapsedString(elapsed, runningSince) {
-  let totalElapsed = elapsed;
+export function renderElapsedStrin(elapsed: string, runningSince: null) {
+  let totalElapsed = elapsed
   if (runningSince) {
     totalElapsed += Date.now() - runningSince;
   }
@@ -20,8 +19,7 @@ function millisecondsToHuman(ms) {
 
   return humanized;
 }
-
-function pad(numberString, size) {
+function pad(numberString: string, size: number) {
   let padded = numberString;
   while (padded.length < size) padded = `0${padded}`;
   return padded;
