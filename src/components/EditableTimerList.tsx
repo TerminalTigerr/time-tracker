@@ -1,27 +1,27 @@
 import React from 'react'
 import EditableTimer from './EditableTimer.tsx'
 
-type Timerrs = {
+interface Timers {
+  id: string
   title: string
   project: string
-  id: string
-  elapsed: number 
+  elapsed: number
   runningSince: number | null
 }
+
 interface Props {
-  timers: Timerrs[]
+  timers: Timers[]
 }
 
 const EditableTimerList = (props: Props) => {
-  const timers = props.timers.map((timer) => (
-    <EditableTimer
+  const timers = props.timers.map(timer => (
+    <EditableTimer 
       key={timer.id}
       id={timer.id}
       title={timer.title}
       project={timer.project}
       elapsed={timer.elapsed}
       runningSince={timer.runningSince}
-
     />
   ))
   return (

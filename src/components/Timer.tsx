@@ -1,33 +1,42 @@
 import React from 'react'
-import { renderElapsedStrin } from '../helpers.ts'
+import { renderElapsedString } from '../helpers.ts'
 
-interface TimerProps   {
+interface Props {
+  id: string
   title: string
   project: string
   elapsed: number
-  runningSince: null | number
+  runningSince: number | null
 }
 
-const Timer = (props: TimerProps) => {
-  const elapsedString = renderElapsedStrin(props.elapsed, props.runningSince)
+const Timer = (props: Props) => {
+  const elapsedString = renderElapsedString(props.elapsed, props.runningSince)
   return (
     <div className='grid gap-3 border-[1px] border-gray-300 w-[320px] rounded-md shadow-sm'>
       <div className='pl-3 pt-3'>
-        <h3 className=' text-xl font-semibold'>
+        <h3 
+          className=' text-xl font-semibold'
+        >
           {props.title}
         </h3>
-        <h3 className='text-gray-400'>
+        <h3 
+          className='text-gray-400'
+        >
           {props.project}
         </h3>
       </div>
-      <div className='flex justify-center items-center text-2xl font-medium text-gray-600'>
+      <div
+        className='flex justify-center items-center text-2xl font-medium text-gray-600'
+      >
         <h3>{elapsedString}</h3>
       </div>
-      <div className='flex justify-end items-end pr-3 space-x-1'>
+      <div
+         className='flex justify-end items-end pr-3 space-x-1'
+      >
         <span>
-          <button 
+          <button
+            className='text-sm text-gray-400' 
             type='button'
-            className='text-sm text-gray-400'
           >
             Edit
           </button>
@@ -41,9 +50,10 @@ const Timer = (props: TimerProps) => {
           </button>
         </span>
       </div>
-      <div 
+      <div
         className='flex justify-center items-center py-2 text-green-500 
-        w-full border-[1px] border-green-500 rounded-b-sm'>
+        w-full border-[1px] border-green-500 rounded-b-sm shadow-sm'
+      >
         Start
       </div>
     </div>

@@ -1,33 +1,44 @@
 import React, { useState } from 'react'
+import { v4 as uuidv4} from 'uuid'
 import TimerForm from './TimerForm.tsx'
 
-const ToggleableTimerForm = () => {
+interface Props {
+  onFormSubmit: (timer: {id?: string, title: string, project: string}) => void
+}
+
+const ToggleableTimerForm = (props: Props) => {
   const [isOpen, setOpen] = useState(false)
 
-  const handleFormOpen = () => {
-    setOpen(prev => !prev)
+  const handleFormOpen = (): void => {
+    setOpen(true)
   }
 
-  const handleFormClose = () => {
+  const handleFormClose = (): void => {
+    setOpen(false)
+  }
+
+  const handleFormSubmit = (timer: {id?: string, title: string, project: string}) => {
+    props.onFormSubmit(timer)
     setOpen(false)
   }
 
   if(isOpen){
-    return(
-      <TimerForm
-        id='00011'
+    return (
+      <TimerForm 
+        id={uuidv4()}
         title=''
         project=''
-        onClose={handleFormClose}
-      />
+        onFormClose={handleFormClose}
+        onFormSubmit={handleFormSubmit}
+      />  
     )
-  }else{
+  }else {
     return(
-      <div className=' '>
+      <div>
         <button
-          onClick={handleFormOpen}
           className='text-lg text-gray-600 font-semibold border-[1px] border-gray-300 px-3 py-2' 
-          type='submit'
+          type='button'
+          onClick={handleFormOpen}
         >
           +
         </button>

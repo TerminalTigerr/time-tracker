@@ -7,33 +7,30 @@ interface Props {
   title: string
   project: string
   elapsed: number
-  runningSince: null | number
+  runningSince: number | null
 }
 
 const EditableTimer = (props: Props) => {
   const [editFormOpen, setFormOpen] = useState(false)
   if(editFormOpen){
-    return (
-      <div className=''>
-        <TimerForm 
-          title={props.title}
-          project={props.project}
-          
-        />
-      </div>
-    )
-  }else {
     return(
-      <div 
-        className=''>
-        <Timer 
-          title={props.title}
-          project={props.project}
-          elapsed={props.elapsed}
-          runningSince={props.runningSince}
-        />
-      </div>
+      <TimerForm 
+        id={props.id}
+        title={props.title}
+        project={props.project}
+      />
+    )
+  }else{
+    return(
+      <Timer
+        id={props.id}
+        title={props.title}
+        project={props.project}
+        elapsed={props.elapsed}
+        runningSince={props.runningSince}
+      />
     )
   }
 }
+
 export default EditableTimer
