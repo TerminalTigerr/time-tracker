@@ -8,10 +8,15 @@ interface Props {
   elapsed: number
   runningSince: number | null
   onEditClick: () => void
+  onTrashClick: (timerId: string) => void
 }
 
 const Timer = (props: Props) => {
   const elapsedString = renderElapsedString(props.elapsed, props.runningSince)
+
+  const handleTrashClick = () => {
+    props.onTrashClick(props.id)
+  }
   return (
     <div className='grid gap-3 border-[1px] border-gray-300 w-[320px] rounded-md shadow-sm'>
       <div className='pl-3 pt-3'>
@@ -47,6 +52,7 @@ const Timer = (props: Props) => {
           <button 
             type='button'
             className='text-sm text-gray-400'
+            onClick={handleTrashClick}
           >
             Trash
           </button>

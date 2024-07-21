@@ -63,6 +63,14 @@ const TimersDashBoard = () => {
     const t = newTimer(timer)
     setTimers(prev => [...prev, t])
   }
+
+  const handleTrashClick = (timerId: string) => {
+    deleteTimer(timerId)
+  }
+
+  const deleteTimer = (timerId: string) => {
+    setTimers(timers.filter(timer => timer.id !== timerId))
+  }
   return (
     <main
       className='flex flex-col justify-center items-center gap-3 py-10'
@@ -70,6 +78,7 @@ const TimersDashBoard = () => {
       <EditableTimerList 
         timers={timers}
         onFormSubmit={handleEditFormSubmit}
+        onTrashClick={handleTrashClick}
       />
       <ToggleableTimerForm 
         onFormSubmit={handleCreateFormSubmit}
