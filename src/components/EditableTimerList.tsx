@@ -11,6 +11,7 @@ interface Timers {
 
 interface Props {
   timers: Timers[]
+  onFormSubmit: (attr: {id?: string, title: string, project: string}) => void
 }
 
 const EditableTimerList = (props: Props) => {
@@ -22,6 +23,8 @@ const EditableTimerList = (props: Props) => {
       project={timer.project}
       elapsed={timer.elapsed}
       runningSince={timer.runningSince}
+      onFormSubmit={props.onFormSubmit}
+      
     />
   ))
   return (

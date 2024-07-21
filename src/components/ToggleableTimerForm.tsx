@@ -36,7 +36,8 @@ const ToggleableTimerForm = (props: Props) => {
     return(
       <div>
         <button
-          className='text-lg text-gray-600 font-semibold border-[1px] border-gray-300 px-3 py-2' 
+          className='text-lg text-gray-600 font-semibold 
+          border-[1px] border-gray-300 px-3 py-2' 
           type='button'
           onClick={handleFormOpen}
         >

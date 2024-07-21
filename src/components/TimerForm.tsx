@@ -28,7 +28,7 @@ const TimerForm = (props: Props) => {
     }))
   } 
 
-  const handleFormSubmit = () => {
+  const handleSubmit = () => {
     props.onFormSubmit({
       id: props.id,
       title: inputFields.title,
@@ -66,7 +66,7 @@ const TimerForm = (props: Props) => {
           <button
             className='border-[1px] border-blue-500 border-r-red-500 w-[50%]' 
             type='button'
-            onClick={handleFormSubmit}
+            onClick={handleSubmit}
           >
             {submitText}
           </button>

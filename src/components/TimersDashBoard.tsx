@@ -36,6 +36,25 @@ const TimersDashBoard = () => {
     }
   ])
 
+  const handleEditFormSubmit = (attr: TimerSubmit) => {
+    updateTimer(attr)
+  }
+
+  const updateTimer = (attrs: TimerSubmit) => {
+    setTimers(
+      timers.map(timer => {
+        if(timer.id === attrs.id){
+          return Object.assign({}, timer, {
+            title: attrs.title,
+            project: attrs.project
+          })
+        }else {
+          return timer
+        }
+      })
+    )
+  }
+
   const handleCreateFormSubmit = (timer: TimerSubmit) => {
     createTimer(timer)
   }
@@ -50,6 +69,7 @@ const TimersDashBoard = () => {
     >
       <EditableTimerList 
         timers={timers}
+        onFormSubmit={handleEditFormSubmit}
       />
       <ToggleableTimerForm 
         onFormSubmit={handleCreateFormSubmit}
