@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { renderElapsedString } from '../helpers.ts'
+import TimerActionButton from './TimerActionButton.tsx'
 
 interface Props {
   id: string
@@ -10,6 +11,7 @@ interface Props {
   onEditClick: () => void
   onTrashClick: (timerId: string) => void
   onStartClick: (timerId: string) => void
+  onStopClick: (timerId: string) => void
 }
 
 const Timer = (props: Props) => {
@@ -36,6 +38,10 @@ const Timer = (props: Props) => {
 
   const handleStartClick = () => {
     props.onStartClick(props.id)
+  }
+
+  const handleStopClick = () => {
+    props.onStopClick(props.id)
   }
   return (
     <div className='grid gap-3 border-[1px] border-gray-300 w-[320px] rounded-md shadow-sm'>
@@ -78,12 +84,12 @@ const Timer = (props: Props) => {
           </button>
         </span>
       </div>
-      <div
-        className='flex justify-center items-center py-2 text-green-500 
-        w-full border-[1px] border-green-500 rounded-b-sm shadow-sm cursor-pointer'
-        onClick={handleStartClick}
-      >
-        Start
+      <div>
+        <TimerActionButton 
+          timerIsRunning={!!props.runningSince}
+          onStartClick={handleStartClick}
+          onStopClick={handleStopClick}
+        />
       </div>
     </div>
   )

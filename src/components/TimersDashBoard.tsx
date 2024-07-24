@@ -40,12 +40,28 @@ const TimersDashBoard = () => {
     startTimer(timerId)
   }
 
+  const handleStopClick = (timerId: string): void => {
+    stopTimer(timerId)
+  }
 
   const startTimer = (timerId: string): void => {
     setTimers(prevTimers => 
       prevTimers.map(timer => 
         timer.id === timerId ? {...timer, runningSince: Date.now()} : timer
       )
+    )
+  }
+
+  const stopTimer = (timerId: string) => {
+    setTimers(prevTimers => 
+      prevTimers.map(timer => {
+        if(timer.runningSince !== null) {
+          const lastElapsed = Date.now() - timer.runningSince
+          return timer.id === timerId ? {...timer, runningSince: null, elapsed: lastElapsed + timer.elapsed} : timer
+        }else {
+          return timer.id === timerId ? {...timer, runnigSince: null} : timer
+        }  
+      })
     )
   }
 
@@ -93,6 +109,7 @@ const TimersDashBoard = () => {
         onFormSubmit={handleEditFormSubmit}
         onTrashClick={handleTrashClick}
         onStartClick={handleStartClick}
+        onStopClick={handleStopClick}
       />
       <ToggleableTimerForm 
         onFormSubmit={handleCreateFormSubmit}
