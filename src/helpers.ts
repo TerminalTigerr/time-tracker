@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 
-export function renderElapsedString(elapsed: number, runningSince: null | number) {
+export function renderElapsedString(elapsed: number, runningSince?: null | number) {
   let totalElapsed = elapsed
   if (runningSince) {
     totalElapsed += Date.now() - runningSince;
@@ -8,7 +8,7 @@ export function renderElapsedString(elapsed: number, runningSince: null | number
   return millisecondsToHuman(totalElapsed);
 }
 
-function millisecondsToHuman(ms) {
+function millisecondsToHuman(ms: number) {
   const seconds = Math.floor((ms / 1000) % 60);
   const minutes = Math.floor((ms / 1000 / 60) % 60);
   const hours = Math.floor(ms / 1000 / 60 / 60);

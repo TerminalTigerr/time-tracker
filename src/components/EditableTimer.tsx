@@ -10,6 +10,7 @@ interface Props {
   runningSince: number | null
   onFormSubmit: (attr: {id?: string, title: string, project: string}) => void
   onTrashClick: (timerId: string) => void
+  onStartClick: (timerId: string) => void
 }
 
 const EditableTimer = (props: Props) => {
@@ -50,6 +51,7 @@ const EditableTimer = (props: Props) => {
         runningSince={props.runningSince}
         onEditClick={handleEditClick}
         onTrashClick={props.onTrashClick}
+        onStartClick={props.onStartClick}
       />
     )
   }

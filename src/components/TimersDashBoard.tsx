@@ -36,6 +36,19 @@ const TimersDashBoard = () => {
     }
   ])
 
+  const handleStartClick = (timerId: string): void => {
+    startTimer(timerId)
+  }
+
+
+  const startTimer = (timerId: string): void => {
+    setTimers(prevTimers => 
+      prevTimers.map(timer => 
+        timer.id === timerId ? {...timer, runningSince: Date.now()} : timer
+      )
+    )
+  }
+
   const handleEditFormSubmit = (attr: TimerSubmit) => {
     updateTimer(attr)
   }
@@ -79,6 +92,7 @@ const TimersDashBoard = () => {
         timers={timers}
         onFormSubmit={handleEditFormSubmit}
         onTrashClick={handleTrashClick}
+        onStartClick={handleStartClick}
       />
       <ToggleableTimerForm 
         onFormSubmit={handleCreateFormSubmit}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { renderElapsedString } from '../helpers.ts'
 
 interface Props {
@@ -9,13 +9,33 @@ interface Props {
   runningSince: number | null
   onEditClick: () => void
   onTrashClick: (timerId: string) => void
+  onStartClick: (timerId: string) => void
 }
 
 const Timer = (props: Props) => {
+  const [, setTick] = useState(0)
+
+  const forceUpdate = (): void => {
+    setTick(prev => prev + 1)
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      forceUpdate()
+    },50)
+    return () => {
+      clearInterval(interval)
+    }
+  },[])
+
   const elapsedString = renderElapsedString(props.elapsed, props.runningSince)
 
   const handleTrashClick = () => {
     props.onTrashClick(props.id)
+  }
+
+  const handleStartClick = () => {
+    props.onStartClick(props.id)
   }
   return (
     <div className='grid gap-3 border-[1px] border-gray-300 w-[320px] rounded-md shadow-sm'>
@@ -60,7 +80,8 @@ const Timer = (props: Props) => {
       </div>
       <div
         className='flex justify-center items-center py-2 text-green-500 
-        w-full border-[1px] border-green-500 rounded-b-sm shadow-sm'
+        w-full border-[1px] border-green-500 rounded-b-sm shadow-sm cursor-pointer'
+        onClick={handleStartClick}
       >
         Start
       </div>

@@ -13,6 +13,7 @@ interface Props {
   timers: Timers[]
   onFormSubmit: (attr: {id?: string, title: string, project: string}) => void
   onTrashClick: (timerId: string) => void
+  onStartClick: (timerId: string) => void
 }
 
 const EditableTimerList = (props: Props) => {
@@ -26,7 +27,7 @@ const EditableTimerList = (props: Props) => {
       runningSince={timer.runningSince}
       onFormSubmit={props.onFormSubmit}
       onTrashClick={props.onTrashClick}
-      
+      onStartClick={props.onStartClick}
     />
   ))
   return (
